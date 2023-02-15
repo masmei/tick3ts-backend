@@ -1,7 +1,6 @@
 // DEPENDENCIES
 const cors = require("cors");
 const express = require("express");
-const profileController = require("./controllers/profileController.js");
 
 // CONFIGURATION
 const app = express();
@@ -9,12 +8,19 @@ const app = express();
 // MIDDLEWARE
 app.use(express.json());
 app.use(cors());
-app.use("/profiles", profileController);
 
 // ROUTES
 app.get("/", (req, res) => {
-  res.send("Welcome to the NFT Profile API");
+  res.send("Welcome to the Tick3ts API");
 });
+
+// Profiles ROUTES
+const profileController = require("./controllers/profileController.js");
+app.use("/profiles", profileController);
+
+//Events ROUTES
+const eventController = require("./controllers/eventController");
+app.use("/events", eventController);
 
 // 404 PAGE
 app.get("*", (req, res) => {

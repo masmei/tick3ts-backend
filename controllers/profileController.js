@@ -1,5 +1,4 @@
 const express = require("express");
-const profiles = express.Router();
 const {
   getAllProfiles,
   getProfile,
@@ -8,6 +7,10 @@ const {
   deleteProfile,
 } = require("../queries/profiles");
 const { checkName, validateUrl } = require("../validations/checkProfiles")
+
+
+// Configuration
+const profiles = express.Router();
 
 // INDEX
 profiles.get("/", async (req, res) => {
